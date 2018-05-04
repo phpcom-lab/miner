@@ -59,6 +59,9 @@ class Miner
     /** ILIKE comparison operator. */
     const I_LIKE = 'ILIKE';
 
+    /** SOUNDS LIKE comparison operator. */
+    const SOUNDS_LIKE = 'SOUNDS LIKE';
+
     /** REGEXP comparison operator. */
     const REGEX = 'REGEXP';
 
@@ -385,13 +388,28 @@ class Miner
 
     /**
      * Add a SELECT column, table, or expression with optional alias.
-     * @param  string $column column name, table name, or expression
+     * @param  string|array $column column name, table name, or expression
      * @param  string $alias optional alias
      * @return Miner
      */
     public function select($column, $alias = null): self
     {
-        $this->select[$column] = $alias;
+        if (\is_string($column)) {
+            if (strpos($column, ',')) {
+                $this->select = \array_merge($this->select, \array_filter(\explode(',', $column)));
+            } else {
+                $this->select[$column] = $alias;
+            }
+        } elseif (\is_array($column)) {
+            foreach ($column as $col => $ali) {
+                if (\is_numeric($col)) {
+                    $this->select[$ali] = null;
+                } else {
+                    $this->select[$col] = $ali;
+                }
+            }
+        }
+
 
         return $this;
     }
