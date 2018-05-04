@@ -823,7 +823,7 @@ class Miner
      * @param  string $alias optional alias
      * @return Miner
      */
-    public function from($table, $alias = null): self
+    public function from(string $table, string $alias = null): self
     {
         $this->from['table'] = $table;
         $this->from['alias'] = $alias;
@@ -851,7 +851,7 @@ class Miner
      */
     public function getFrom(): string
     {
-        return $this->from['table'];
+        return $this->from['table'] ?? '';
     }
 
     /**
@@ -860,7 +860,7 @@ class Miner
      */
     public function getFromAlias(): string
     {
-        return $this->from['alias'];
+        return $this->from['alias'] ?? '';
     }
 
     /**
