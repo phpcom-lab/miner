@@ -4,6 +4,8 @@ Miner
 [![Latest Stable Version](https://poser.pugx.org/jstayton/miner/v/stable.png)](https://packagist.org/packages/jstayton/miner)
 [![Total Downloads](https://poser.pugx.org/jstayton/miner/downloads.png)](https://packagist.org/packages/jstayton/miner)
 
+> forked from https://github.com/jstayton/Miner
+
 A dead simple PHP class for building SQL statements. No manual string
 concatenation necessary.
 
@@ -30,7 +32,7 @@ The recommended installation method is through
 ```json
 {
     "require": {
-        "jstayton/miner": "*"
+        "ulue/miner": "*"
     }
 }
 ```
@@ -50,8 +52,8 @@ Composing SQL with Miner is very similar to writing it by hand, as much of the
 syntax maps directly to methods:
 
 ```php
-$Miner = new Miner();
-$Miner->select('*')
+$miner = new Miner();
+$miner->select('*')
       ->from('shows')
       ->innerJoin('episodes', 'show_id')
       ->where('shows.network_id', 12)
@@ -62,13 +64,13 @@ $Miner->select('*')
 Now that the statement is built,
 
 ```php
-$Miner->getStatement();
+$miner->getStatement();
 ```
 
 returns the full SQL string with placeholders (?), and
 
 ```php
-$Miner->getPlaceholderValues();
+$miner->getPlaceholderValues();
 ```
 
 returns the array of placeholder values that can then be passed to your
@@ -76,26 +78,26 @@ database connection or abstraction layer of choice. Or, if you'd prefer it all
 at once, you can get the SQL string with values already safely quoted:
 
 ```php
-$Miner->getStatement(false);
+$miner->getStatement(false);
 ```
 
 If you're using PDO, however, Miner makes executing the statement even easier:
 
 ```php
-$PDOStatement = $Miner->execute();
+$PDOStatement = $miner->execute();
 ```
 
 Miner works directly with your PDO connection, which can be passed during
 creation of the Miner object
 
 ```php
-$Miner = new Miner($PDO);
+$miner = new Miner($PDO);
 ```
 
 or after
 
 ```php
-$Miner->setPdoConnection($PDO);
+$miner->setPdoConnection($PDO);
 ```
 
 Usage
@@ -116,7 +118,7 @@ LIMIT 20
 With Miner:
 
 ```php
-$Miner->select('*')
+$miner->select('*')
       ->from('shows')
       ->innerJoin('episodes', 'show_id')
       ->where('shows.network_id', 12)
@@ -136,7 +138,7 @@ SET network_id = 13,
 With Miner:
 
 ```php
-$Miner->insert('shows')
+$miner->insert('shows')
       ->option('HIGH_PRIORITY')
       ->set('network_id', 13)
       ->set('name', 'Freaks & Geeks')
@@ -155,7 +157,7 @@ SET network_id = 13,
 With Miner:
 
 ```php
-$Miner->replace('shows')
+$miner->replace('shows')
       ->set('network_id', 13)
       ->set('name', 'Freaks & Geeks')
       ->set('air_day', 'Monday');
@@ -174,7 +176,7 @@ WHERE show_id = 12
 With Miner:
 
 ```php
-$Miner->update('episodes')
+$miner->update('episodes')
       ->set('aired_on', '2012-06-25')
       ->where('show_id', 12)
       ->openWhere(Miner::LOGICAL_OR)
@@ -195,7 +197,7 @@ LIMIT 3
 With Miner:
 
 ```php
-$Miner->delete()
+$miner->delete()
       ->from('shows')
       ->whereIn('show_id', array(12, 15, 20))
       ->limit(3);
