@@ -2147,14 +2147,12 @@ class Miner
             return false;
         }
 
-        $statement = $this->getStatement();
-
         // Only execute if a statement is set.
-        if ($statement) {
-            $PdoStatement = $pdoConnection->prepare($statement);
-            $PdoStatement->execute($this->getPlaceholderValues());
+        if ($statement = $this->getStatement()) {
+            $pdoStatement = $pdoConnection->prepare($statement);
+            $pdoStatement->execute($this->getPlaceholderValues());
 
-            return $PdoStatement;
+            return $pdoStatement;
         }
 
         return false;
