@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A dead simple PHP class for building SQL statements. No manual string concatenation necessary.</title>
+  <link rel="stylesheet" href="./assets/github-markdown.min.css">
+  <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  <style>
+    .markdown-body {
+      box-sizing: border-box;
+      min-height: 400px;
+      min-width: 200px;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 45px;
+    }
+
+    @media (max-width: 767px) {
+      .markdown-body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+<article id="content" class="markdown-body">
+  <h3>waiting content loading ... ...</h3>
+</article>
+<script src="assets/jquery.min.js"></script>
+<script src="assets/markdown-it.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script>
+  $(function () {
+    let md = markdownit({
+      html: true,
+      linkify: true,
+      typographer: true,
+      highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(lang, str).value;
+          } catch (__) {}
+        }
+
+        return ''; // use external default escaping
+      }
+    })
+
+    $
+      .get('https://raw.githubusercontent.com/ulue/Miner/master/README.md')
+      .then(function (res) {
+        let box = $('#content')
+        box.html(md.render(res))
+      })
+  })
+</script>
+</body>
+</html>
