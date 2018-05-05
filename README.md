@@ -6,19 +6,17 @@ Miner
 
 > forked from https://github.com/jstayton/Miner
 
-A dead simple PHP class for building SQL statements. No manual string
-concatenation necessary.
+A dead simple PHP class for building SQL statements. No manual string concatenation necessary.
 
-Developed by [Justin Stayton](http://twitter.com/jstayton) while at
-[Monk Development](http://monkdev.com).
+Developed by [Justin Stayton](http://twitter.com/jstayton) while at [Monk Development](http://monkdev.com).
 
-*   [Documentation](http://jstayton.github.io/Miner/classes/Miner.html)
-*   [Release Notes](https://github.com/jstayton/Miner/wiki/Release-Notes)
+* [Documentation](http://jstayton.github.io/Miner/classes/Miner.html)
+* [Release Notes](https://github.com/jstayton/Miner/wiki/Release-Notes)
 
 Requirements
 ------------
 
-*   PHP >= 5.1.0
+* PHP > 7.0.0
 
 Installation
 ------------
@@ -37,13 +35,7 @@ The recommended installation method is through
 }
 ```
 
-[More details](http://packagist.org/packages/jstayton/miner) can be found over
-at [Packagist](http://packagist.org).
-
-### Manually
-
-1.  Copy `src/Miner.php` to your codebase, perhaps to the `vendor` directory.
-2.  Add the `Miner` class to your autoloader or `require` the file directly.
+[More details](http://packagist.org/packages/jstayton/miner) can be found over at [Packagist](http://packagist.org).
 
 Getting Started
 ---------------
@@ -64,7 +56,7 @@ $miner->select('*')
 Now that the statement is built,
 
 ```php
-$miner->getStatement();
+$miner->getSql(); // Or $miner->getStatement();
 ```
 
 returns the full SQL string with placeholders (?), and
@@ -169,8 +161,7 @@ $miner->replace('shows')
 UPDATE episodes
 SET aired_on = '2012-06-25'
 WHERE show_id = 12
-  OR (name = 'Girlfriends and Boyfriends'
-        AND air_day != 'Monday')
+  OR (name = 'Girlfriends and Boyfriends' AND air_day != 'Monday')
 ```
 
 With Miner:
@@ -180,8 +171,8 @@ $miner->update('episodes')
       ->set('aired_on', '2012-06-25')
       ->where('show_id', 12)
       ->openWhere(Miner::LOGICAL_OR)
-      ->where('name', 'Girlfriends and Boyfriends')
-      ->where('air_day', 'Monday', Miner::NOT_EQUALS)
+          ->where('name', 'Girlfriends and Boyfriends')
+          ->where('air_day', 'Monday', Miner::NOT_EQUALS)
       ->closeWhere();
 ```
 

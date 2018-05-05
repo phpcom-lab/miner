@@ -1,16 +1,21 @@
 <?php
 
+namespace Miner;
+
+use PDO;
+use PDOStatement;
+
 /**
  * A dead simple PHP class for building SQL statements. No manual string concatenation necessary.
  *
  * @author    Justin Stayton
- * @copyright Copyright 2015 by Justin Stayton
  * @license   https://github.com/jstayton/Miner/blob/master/LICENSE-MIT MIT
  * @package   Miner
- * @version   0.10.0
  */
 class Miner
 {
+    use InsertTrait, SelectTrait, UpdateTrait, ReplaceTrait, DeleteTrait;
+
     /** INNER JOIN type. */
     const INNER_JOIN = 'INNER JOIN';
 
@@ -111,36 +116,6 @@ class Miner
     private $option;
 
     /**
-     * Columns, tables, and expressions to SELECT from.
-     * @var array
-     */
-    private $select;
-
-    /**
-     * Table to INSERT into.
-     * @var string
-     */
-    private $insert;
-
-    /**
-     * Table to REPLACE into.
-     * @var string
-     */
-    private $replace;
-
-    /**
-     * Table to UPDATE.
-     * @var string
-     */
-    private $update;
-
-    /**
-     * Tables to DELETE from, or true if deleting from the FROM table.
-     * @var array|true
-     */
-    private $delete;
-
-    /**
      * Column values to INSERT, UPDATE, or REPLACE.
      * @var array
      */
@@ -212,11 +187,12 @@ class Miner
      * @param  PDO|null $pdoConnection optional PDO database connection
      * @param  bool $autoQuote optional auto-escape values, default true
      */
-    public function __construct(PDO $pdoConnection = null, $autoQuote = true)
+    public function __construct(PDO $pdoConnection = null, bool $autoQuote = true)
     {
         $this->option = [];
         $this->select = [];
         $this->delete = [];
+
         $this->set = [];
         $this->from = [];
         $this->join = [];
@@ -325,7 +301,7 @@ class Miner
      * @param  string $option execution option to add
      * @return Miner
      */
-    public function option($option): self
+    public function option(string $option): self
     {
         $this->option[] = $option;
 
@@ -387,347 +363,6 @@ class Miner
     }
 
     /**
-     * Add a SELECT column, table, or expression with optional alias.
-     * @param  string|array $column column name, table name, or expression
-     * @param  string $alias optional alias
-     * @return Miner
-     */
-    public function select($column, $alias = null): self
-    {
-        if (\is_string($column)) {
-            if (strpos($column, ',')) {
-                $this->select = \array_merge($this->select, \array_filter(\explode(',', $column)));
-            } else {
-                $this->select[$column] = $alias;
-            }
-        } elseif (\is_array($column)) {
-            foreach ($column as $col => $ali) {
-                if (\is_numeric($col)) {
-                    $this->select[$ali] = null;
-                } else {
-                    $this->select[$col] = $ali;
-                }
-            }
-        }
-
-
-        return $this;
-    }
-
-    /**
-     * Merge this Miner's SELECT into the given Miner.
-     * @param  self $miner to merge into
-     * @return Miner
-     */
-    public function mergeSelectInto(self $miner): self
-    {
-        $this->mergeOptionsInto($miner);
-
-        foreach ($this->select as $column => $alias) {
-            $miner->select($column, $alias);
-        }
-
-        return $miner;
-    }
-
-    /**
-     * Get the SELECT portion of the statement as a string.
-     * @param  bool $includeText optional include 'SELECT' text, default true
-     * @return string SELECT portion of the statement
-     */
-    public function getSelectString($includeText = true): string
-    {
-        $statement = '';
-
-        if (!$this->select) {
-            return $statement;
-        }
-
-        $statement .= $this->getOptionsString(true);
-
-        foreach ($this->select as $column => $alias) {
-            $statement .= $column;
-
-            if ($alias) {
-                $statement .= ' AS ' . $alias;
-            }
-
-            $statement .= ', ';
-        }
-
-        $statement = substr($statement, 0, -2);
-
-        if ($includeText && $statement) {
-            $statement = 'SELECT ' . $statement;
-        }
-
-        return $statement;
-    }
-
-    /**
-     * Set the INSERT table.
-     * @param  string $table INSERT table
-     * @return Miner
-     */
-    public function insert($table): self
-    {
-        $this->insert = $table;
-
-        return $this;
-    }
-
-    /**
-     * Merge this Miner's INSERT into the given Miner.
-     * @param  self $miner to merge into
-     * @return Miner
-     */
-    public function mergeInsertInto(self $miner): self
-    {
-        $this->mergeOptionsInto($miner);
-
-        if ($this->insert) {
-            $miner->insert($this->getInsert());
-        }
-
-        return $miner;
-    }
-
-    /**
-     * Get the INSERT table.
-     * @return string INSERT table
-     */
-    public function getInsert(): string
-    {
-        return $this->insert;
-    }
-
-    /**
-     * Get the INSERT portion of the statement as a string.
-     * @param  bool $includeText optional include 'INSERT' text, default true
-     * @return string INSERT portion of the statement
-     */
-    public function getInsertString($includeText = true): string
-    {
-        $statement = '';
-
-        if (!$this->insert) {
-            return $statement;
-        }
-
-        $statement .= $this->getOptionsString(true);
-        $statement .= $this->getInsert();
-
-        if ($includeText && $statement) {
-            $statement = 'INSERT ' . $statement;
-        }
-
-        return $statement;
-    }
-
-    /**
-     * Set the REPLACE table.
-     * @param  string $table REPLACE table
-     * @return Miner
-     */
-    public function replace($table): self
-    {
-        $this->replace = $table;
-
-        return $this;
-    }
-
-    /**
-     * Merge this Miner's REPLACE into the given Miner.
-     * @param  self $miner to merge into
-     * @return Miner
-     */
-    public function mergeReplaceInto(self $miner): self
-    {
-        $this->mergeOptionsInto($miner);
-
-        if ($this->replace) {
-            $miner->replace($this->getReplace());
-        }
-
-        return $miner;
-    }
-
-    /**
-     * Get the REPLACE table.
-     * @return string REPLACE table
-     */
-    public function getReplace(): string
-    {
-        return $this->replace;
-    }
-
-    /**
-     * Get the REPLACE portion of the statement as a string.
-     * @param  bool $includeText optional include 'REPLACE' text, default true
-     * @return string REPLACE portion of the statement
-     */
-    public function getReplaceString($includeText = true): string
-    {
-        $statement = '';
-
-        if (!$this->replace) {
-            return $statement;
-        }
-
-        $statement .= $this->getOptionsString(true);
-        $statement .= $this->getReplace();
-
-        if ($includeText && $statement) {
-            $statement = 'REPLACE ' . $statement;
-        }
-
-        return $statement;
-    }
-
-    /**
-     * Set the UPDATE table.
-     * @param  string $table UPDATE table
-     * @return Miner
-     */
-    public function update($table): self
-    {
-        $this->update = $table;
-
-        return $this;
-    }
-
-    /**
-     * Merge this Miner's UPDATE into the given Miner.
-     * @param  self $miner to merge into
-     * @return Miner
-     */
-    public function mergeUpdateInto(self $miner): self
-    {
-        $this->mergeOptionsInto($miner);
-
-        if ($this->update) {
-            $miner->update($this->getUpdate());
-        }
-
-        return $miner;
-    }
-
-    /**
-     * Get the UPDATE table.
-     * @return string UPDATE table
-     */
-    public function getUpdate(): string
-    {
-        return $this->update;
-    }
-
-    /**
-     * Get the UPDATE portion of the statement as a string.
-     * @param  bool $includeText optional include 'UPDATE' text, default true
-     * @return string UPDATE portion of the statement
-     */
-    public function getUpdateString($includeText = true): string
-    {
-        $statement = '';
-
-        if (!$this->update) {
-            return $statement;
-        }
-
-        $statement .= $this->getOptionsString(true);
-        $statement .= $this->getUpdate();
-
-        // Add any JOINs.
-        $statement .= ' ' . $this->getJoinString();
-        $statement = rtrim($statement);
-
-        if ($includeText && $statement) {
-            $statement = 'UPDATE ' . $statement;
-        }
-
-        return $statement;
-    }
-
-    /**
-     * Add a table to DELETE from, or false if deleting from the FROM table.
-     * @param  string|false $table optional table name, default false
-     * @return Miner
-     */
-    public function delete($table = false): self
-    {
-        if ($table === false) {
-            $this->delete = true;
-        } else {
-            // Reset the array in case the class variable was previously set to a boolean value.
-            if (!\is_array($this->delete)) {
-                $this->delete = [];
-            }
-
-            $this->delete[] = $table;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Merge this Miner's DELETE into the given Miner.
-     * @param  self $miner to merge into
-     * @return Miner
-     */
-    public function mergeDeleteInto(self $miner): self
-    {
-        $this->mergeOptionsInto($miner);
-
-        if ($this->isDeleteTableFrom()) {
-            $miner->delete();
-        } else {
-            foreach ($this->delete as $delete) {
-                $miner->delete($delete);
-            }
-        }
-
-        return $miner;
-    }
-
-    /**
-     * Get the DELETE portion of the statement as a string.
-     * @param  bool $includeText optional include 'DELETE' text, default true
-     * @return string DELETE portion of the statement
-     */
-    public function getDeleteString($includeText = true): string
-    {
-        $statement = '';
-
-        if (!$this->delete && !$this->isDeleteTableFrom()) {
-            return $statement;
-        }
-
-        $statement .= $this->getOptionsString(true);
-
-        if (\is_array($this->delete)) {
-            $statement .= implode(', ', $this->delete);
-        }
-
-        if ($includeText && ($statement || $this->isDeleteTableFrom())) {
-            $statement = 'DELETE ' . $statement;
-
-            // Trim in case the table is specified in FROM.
-            $statement = trim($statement);
-        }
-
-        return $statement;
-    }
-
-    /**
-     * Whether the FROM table is the single table to delete from.
-     * @return bool whether the delete table is FROM
-     */
-    private function isDeleteTableFrom(): bool
-    {
-        return $this->delete === true;
-    }
-
-    /**
      * Add one or more column values to INSERT, UPDATE, or REPLACE.
      * @param  string|array $column column name or array of columns => values
      * @param  mixed|null $value optional value for single column
@@ -741,11 +376,11 @@ class Miner
                 $this->set($columnName, $columnValue, $quote);
             }
         } else {
-            $this->set[] = array(
+            $this->set[] = [
                 'column' => $column,
                 'value' => $value,
                 'quote' => $quote
-            );
+            ];
         }
 
         return $this;
@@ -869,7 +504,7 @@ class Miner
      * @param  string $alias table alias
      * @return bool whether the join table and alias is unique
      */
-    private function isJoinUnique($table, $alias): bool
+    private function isJoinUnique(string $table, $alias): bool
     {
         foreach ($this->join as $join) {
             if ($join['table'] === $table && $join['alias'] === $alias) {
@@ -888,13 +523,13 @@ class Miner
      * @param  string $alias optional alias
      * @return Miner
      */
-    public function join($table, $criteria = null, $type = self::INNER_JOIN, $alias = null): self
+    public function join(string $table, $criteria = null, string $type = self::INNER_JOIN, string $alias = null): self
     {
         if (!$this->isJoinUnique($table, $alias)) {
             return $this;
         }
 
-        if (is_string($criteria)) {
+        if (\is_string($criteria)) {
             $criteria = [$criteria];
         }
 
@@ -1280,7 +915,6 @@ class Miner
                         }
 
                         break;
-
                     case self::IN:
                     case self::NOT_IN:
                         if ($usePlaceholders && $autoQuote) {
@@ -1302,17 +936,14 @@ class Miner
                         }
 
                         break;
-
                     case self::IS:
                     case self::IS_NOT:
                         $value = $criterion['value'];
 
                         break;
-
                     default:
                         if ($usePlaceholders && $autoQuote) {
                             $value = '?';
-
                             $placeholderValues[] = $criterion['value'];
                         } else {
                             $value = $this->autoQuote($criterion['value'], $autoQuote);
@@ -1850,57 +1481,12 @@ class Miner
     }
 
     /**
-     * Whether this is a SELECT statement.
-     * @return bool whether this is a SELECT statement
-     */
-    public function isSelect(): bool
-    {
-        return !empty($this->select);
-    }
-
-    /**
-     * Whether this is an INSERT statement.
-     * @return bool whether this is an INSERT statement
-     */
-    public function isInsert(): bool
-    {
-        return !empty($this->insert);
-    }
-
-    /**
-     * Whether this is a REPLACE statement.
-     * @return bool whether this is a REPLACE statement
-     */
-    public function isReplace(): bool
-    {
-        return !empty($this->replace);
-    }
-
-    /**
-     * Whether this is an UPDATE statement.
-     * @return bool whether this is an UPDATE statement
-     */
-    public function isUpdate(): bool
-    {
-        return !empty($this->update);
-    }
-
-    /**
-     * Whether this is a DELETE statement.
-     * @return bool whether this is a DELETE statement
-     */
-    public function isDelete(): bool
-    {
-        return !empty($this->delete);
-    }
-
-    /**
      * Merge this self into the given Miner.
      * @param  self $miner to merge into
      * @param  bool $overrideLimit optional override limit, default true
      * @return Miner
      */
-    public function mergeInto(self $miner, $overrideLimit = true): self
+    public function mergeInto(self $miner, bool $overrideLimit = true): self
     {
         if ($this->isSelect()) {
             $this->mergeSelectInto($miner);
@@ -1955,164 +1541,13 @@ class Miner
     }
 
     /**
-     * Get the full SELECT statement.
-     * @param  bool $usePlaceholders optional use ? placeholders, default true
-     * @return string full SELECT statement
+     * alias of the getStatement()
+     * @param bool $usePlaceholders
+     * @return string
      */
-    private function getSelectStatement($usePlaceholders = true): string
+    public function getSql(bool $usePlaceholders = true): string
     {
-        $statement = '';
-
-        if (!$this->isSelect()) {
-            return $statement;
-        }
-
-        $statement .= $this->getSelectString();
-
-        if ($this->from) {
-            $statement .= ' ' . $this->getFromString();
-        }
-
-        if ($this->where) {
-            $statement .= ' ' . $this->getWhereString($usePlaceholders);
-        }
-
-        if ($this->groupBy) {
-            $statement .= ' ' . $this->getGroupByString();
-        }
-
-        if ($this->having) {
-            $statement .= ' ' . $this->getHavingString($usePlaceholders);
-        }
-
-        if ($this->orderBy) {
-            $statement .= ' ' . $this->getOrderByString();
-        }
-
-        if ($this->limit) {
-            $statement .= ' ' . $this->getLimitString();
-        }
-
-        return $statement;
-    }
-
-    /**
-     * Get the full INSERT statement.
-     * @param  bool $usePlaceholders optional use ? placeholders, default true
-     * @return string full INSERT statement
-     */
-    private function getInsertStatement($usePlaceholders = true): string
-    {
-        $statement = '';
-
-        if (!$this->isInsert()) {
-            return $statement;
-        }
-
-        $statement .= $this->getInsertString();
-
-        if ($this->set) {
-            $statement .= ' ' . $this->getSetString($usePlaceholders);
-        }
-
-        return $statement;
-    }
-
-    /**
-     * Get the full REPLACE statement.
-     * @param  bool $usePlaceholders optional use ? placeholders, default true
-     * @return string full REPLACE statement
-     */
-    private function getReplaceStatement($usePlaceholders = true): string
-    {
-        $statement = '';
-
-        if (!$this->isReplace()) {
-            return $statement;
-        }
-
-        $statement .= $this->getReplaceString();
-
-        if ($this->set) {
-            $statement .= ' ' . $this->getSetString($usePlaceholders);
-        }
-
-        return $statement;
-    }
-
-    /**
-     * Get the full UPDATE statement.
-     * @param  bool $usePlaceholders optional use ? placeholders, default true
-     * @return string full UPDATE statement
-     */
-    private function getUpdateStatement($usePlaceholders = true): string
-    {
-        $statement = '';
-
-        if (!$this->isUpdate()) {
-            return $statement;
-        }
-
-        $statement .= $this->getUpdateString();
-
-        if ($this->set) {
-            $statement .= ' ' . $this->getSetString($usePlaceholders);
-        }
-
-        if ($this->where) {
-            $statement .= ' ' . $this->getWhereString($usePlaceholders);
-        }
-
-        // ORDER BY and LIMIT are only applicable when updating a single table.
-        if (!$this->join) {
-            if ($this->orderBy) {
-                $statement .= ' ' . $this->getOrderByString();
-            }
-
-            if ($this->limit) {
-                $statement .= ' ' . $this->getLimitString();
-            }
-        }
-
-        return $statement;
-    }
-
-    /**
-     * Get the full DELETE statement.
-     * @param  bool $usePlaceholders optional use ? placeholders, default true
-     * @return string full DELETE statement
-     */
-    private function getDeleteStatement($usePlaceholders = true): string
-    {
-        $statement = '';
-
-        if (!$this->isDelete()) {
-            return $statement;
-        }
-
-        $statement .= $this->getDeleteString();
-
-        if ($this->from) {
-            $statement .= ' ' . $this->getFromString();
-        }
-
-        if ($this->where) {
-            $statement .= ' ' . $this->getWhereString($usePlaceholders);
-        }
-
-        // ORDER BY and LIMIT are only applicable when deleting from a single
-        // table.
-        if ($this->isDeleteTableFrom()) {
-            if ($this->orderBy) {
-                $statement .= ' ' . $this->getOrderByString();
-            }
-
-            if ($this->limit) {
-                $statement .= ' ' . $this->getLimitString();
-            }
-        }
-
-        return $statement;
+        return $this->getStatement($usePlaceholders);
     }
 
     /**
@@ -2120,7 +1555,7 @@ class Miner
      * @param  bool $usePlaceholders optional use ? placeholders, default true
      * @return string full SQL statement
      */
-    public function getStatement($usePlaceholders = true): string
+    public function getStatement(bool $usePlaceholders = true): string
     {
         $statement = '';
 
@@ -2137,6 +1572,15 @@ class Miner
         }
 
         return $statement;
+    }
+
+    /**
+     * alias of the getPlaceholderValues()
+     * @return array
+     */
+    public function getBoundedParams(): array
+    {
+        return $this->getPlaceholderValues();
     }
 
     /**

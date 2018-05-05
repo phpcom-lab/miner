@@ -13,14 +13,11 @@
         }
     ],
     "autoload": {
-        "classmap": [
-            "src/Miner.php"
-        ]
+        "psr-4": {
+          "Miner\\": "src/"
+        }
     },
     "require": {
-        "php": ">7.0"
-    },
-    "require-dev": {
-        "phpdocumentor/phpdocumentor": "*"
+        "php": ">7.0.0"
     }
 }
