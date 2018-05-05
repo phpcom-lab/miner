@@ -1,4 +1,6 @@
 composer.lock
 vendor/
 doc/
+caches/
+classes/
 phpdoc.xml
