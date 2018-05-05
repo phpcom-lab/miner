@@ -1,8 +1,7 @@
-Miner
-=====
+# Miner
 
-[![Latest Stable Version](https://poser.pugx.org/jstayton/miner/v/stable.png)](https://packagist.org/packages/jstayton/miner)
-[![Total Downloads](https://poser.pugx.org/jstayton/miner/downloads.png)](https://packagist.org/packages/jstayton/miner)
+[![Latest Stable Version](https://poser.pugx.org/jstayton/miner/v/stable.png)](https://packagist.org/packages/ulue/miner)
+[![Total Downloads](https://poser.pugx.org/jstayton/miner/downloads.png)](https://packagist.org/packages/ulue/miner)
 
 > forked from https://github.com/jstayton/Miner
 
@@ -10,16 +9,14 @@ A dead simple PHP class for building SQL statements. No manual string concatenat
 
 Developed by [Justin Stayton](http://twitter.com/jstayton) while at [Monk Development](http://monkdev.com).
 
-* [Documentation](http://jstayton.github.io/Miner/classes/Miner.html)
+* [Documentation](https://ulue.github.io/Miner/classes/master/Miner/Miner.html)
 * [Release Notes](https://github.com/jstayton/Miner/wiki/Release-Notes)
 
-Requirements
-------------
+## Requirements
 
 * PHP > 7.0.0
 
-Installation
-------------
+## Installation
 
 ### Composer
 
@@ -43,8 +40,7 @@ Or, just add `ulue/miner` to your project's `composer.json` file:
 
 [More details](http://packagist.org/packages/ulue/miner) can be found over at [Packagist](http://packagist.org).
 
-Getting Started
----------------
+## Getting Started
 
 Composing SQL with Miner is very similar to writing it by hand, as much of the
 syntax maps directly to methods:
@@ -99,8 +95,7 @@ or after
 $miner->setPdoConnection($PDO);
 ```
 
-Usage
------
+## Usage
 
 ### SELECT
 
@@ -203,141 +198,144 @@ $miner->delete()
 
 ## Methods
 
-* [__construct](http://jstayton.github.io/Miner/classes/Miner.html#method___construct)
+* [__construct](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method___construct)
 
 ### SELECT
 
-* [select](http://jstayton.github.io/Miner/classes/Miner.html#method_select)
-* [getSelectString](http://jstayton.github.io/Miner/classes/Miner.html#method_getSelectString)
-* [mergeSelectInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeSelectInto)
+* [select](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_select)
+* [getSelect](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getSelect)
+* [getSelectString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getSelectString)
+* [mergeSelectInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeSelectInto)
 
 ### INSERT
 
-* [insert](http://jstayton.github.io/Miner/classes/Miner.html#method_insert)
-* [getInsert](http://jstayton.github.io/Miner/classes/Miner.html#method_getInsert)
-* [getInsertString](http://jstayton.github.io/Miner/classes/Miner.html#method_getInsertString)
-* [mergeInsertInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeInsertInto)
+* [insert](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_insert)
+* [getInsert](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getInsert)
+* [getInsertString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getInsertString)
+* [mergeInsertInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeInsertInto)
 
 ### REPLACE
 
-* [replace](http://jstayton.github.io/Miner/classes/Miner.html#method_replace)
-* [getReplace](http://jstayton.github.io/Miner/classes/Miner.html#method_getReplace)
-* [getReplaceString](http://jstayton.github.io/Miner/classes/Miner.html#method_getReplaceString)
-* [mergeReplaceInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeReplaceInto)
+* [replace](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_replace)
+* [getReplace](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getReplace)
+* [getReplaceString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getReplaceString)
+* [mergeReplaceInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeReplaceInto)
 
 ### UPDATE
 
-* [update](http://jstayton.github.io/Miner/classes/Miner.html#method_update)
-* [getUpdate](http://jstayton.github.io/Miner/classes/Miner.html#method_getUpdate)
-* [getUpdateString](http://jstayton.github.io/Miner/classes/Miner.html#method_getUpdateString)
-* [mergeUpdateInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeUpdateInto)
+* [update](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_update)
+* [getUpdate](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getUpdate)
+* [getUpdateString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getUpdateString)
+* [mergeUpdateInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeUpdateInto)
 
 ### DELETE
 
-* [delete](http://jstayton.github.io/Miner/classes/Miner.html#method_delete)
-* [getDeleteString](http://jstayton.github.io/Miner/classes/Miner.html#method_getDeleteString)
-* [mergeDeleteInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeDeleteInto)
+* [delete](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_delete)
+* [getDeleteString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getDeleteString)
+* [mergeDeleteInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeDeleteInto)
 
 ### OPTIONS
 
-* [option](http://jstayton.github.io/Miner/classes/Miner.html#method_option)
-* [calcFoundRows](http://jstayton.github.io/Miner/classes/Miner.html#method_calcFoundRows)
-* [distinct](http://jstayton.github.io/Miner/classes/Miner.html#method_distinct)
-* [getOptionsString](http://jstayton.github.io/Miner/classes/Miner.html#method_getOptionsString)
-* [mergeOptionsInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeOptionsInto)
+* [option](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_option)
+* [calcFoundRows](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_calcFoundRows)
+* [distinct](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_distinct)
+* [getOptionsString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getOptionsString)
+* [mergeOptionsInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeOptionsInto)
 
 ### SET / VALUES
 
-* [set](http://jstayton.github.io/Miner/classes/Miner.html#method_set)
-* [values](http://jstayton.github.io/Miner/classes/Miner.html#method_values)
-* [getSetPlaceholderValues](http://jstayton.github.io/Miner/classes/Miner.html#method_getSetPlaceholderValues)
-* [getSetString](http://jstayton.github.io/Miner/classes/Miner.html#method_getSetString)
-* [mergeSetInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeSetInto)
+* [set](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_set)
+* [values](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_values)
+* [getSetPlaceholderValues](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getSetPlaceholderValues)
+* [getSetString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getSetString)
+* [mergeSetInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeSetInto)
 
 ### FROM
 
-* [from](http://jstayton.github.io/Miner/classes/Miner.html#method_from)
-* [innerJoin](http://jstayton.github.io/Miner/classes/Miner.html#method_innerJoin)
-* [leftJoin](http://jstayton.github.io/Miner/classes/Miner.html#method_leftJoin)
-* [rightJoin](http://jstayton.github.io/Miner/classes/Miner.html#method_rightJoin)
-* [join](http://jstayton.github.io/Miner/classes/Miner.html#method_join)
-* [getFrom](http://jstayton.github.io/Miner/classes/Miner.html#method_getFrom)
-* [getFromAlias](http://jstayton.github.io/Miner/classes/Miner.html#method_getFromAlias)
-* [getFromString](http://jstayton.github.io/Miner/classes/Miner.html#method_getFromString)
-* [getJoinString](http://jstayton.github.io/Miner/classes/Miner.html#method_getJoinString)
-* [mergeFromInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeFromInto)
-* [mergeJoinInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeJoinInto)
+* [from](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_from)
+* [innerJoin](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_innerJoin)
+* [leftJoin](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_leftJoin)
+* [rightJoin](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_rightJoin)
+* [join](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_join)
+* [getFrom](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getFrom)
+* [getFromAlias](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getFromAlias)
+* [getFromString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getFromString)
+* [getJoinString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getJoinString)
+* [mergeFromInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeFromInto)
+* [mergeJoinInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeJoinInto)
 
 ### WHERE
 
-* [where](http://jstayton.github.io/Miner/classes/Miner.html#method_where)
-* [andWhere](http://jstayton.github.io/Miner/classes/Miner.html#method_andWhere)
-* [orWhere](http://jstayton.github.io/Miner/classes/Miner.html#method_orWhere)
-* [whereIn](http://jstayton.github.io/Miner/classes/Miner.html#method_whereIn)
-* [whereNotIn](http://jstayton.github.io/Miner/classes/Miner.html#method_whereNotIn)
-* [whereBetween](http://jstayton.github.io/Miner/classes/Miner.html#method_whereBetween)
-* [whereNotBetween](http://jstayton.github.io/Miner/classes/Miner.html#method_whereNotBetween)
-* [openWhere](http://jstayton.github.io/Miner/classes/Miner.html#method_openWhere)
-* [closeWhere](http://jstayton.github.io/Miner/classes/Miner.html#method_closeWhere)
-* [getWherePlaceholderValues](http://jstayton.github.io/Miner/classes/Miner.html#method_getWherePlaceholderValues)
-* [getWhereString](http://jstayton.github.io/Miner/classes/Miner.html#method_getWhereString)
-* [mergeWhereInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeWhereInto)
+* [where](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_where)
+* [andWhere](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_andWhere)
+* [orWhere](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_orWhere)
+* [whereIn](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_whereIn)
+* [whereNotIn](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_whereNotIn)
+* [whereBetween](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_whereBetween)
+* [whereNotBetween](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_whereNotBetween)
+* [openWhere](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_openWhere)
+* [closeWhere](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_closeWhere)
+* [getWherePlaceholderValues](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getWherePlaceholderValues)
+* [getWhereString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getWhereString)
+* [mergeWhereInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeWhereInto)
 
 ### GROUP BY
 
-* [groupBy](http://jstayton.github.io/Miner/classes/Miner.html#method_groupBy)
-* [getGroupByString](http://jstayton.github.io/Miner/classes/Miner.html#method_getGroupByString)
-* [mergeGroupByInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeGroupByInto)
+* [groupBy](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_groupBy)
+* [getGroupByString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getGroupByString)
+* [mergeGroupByInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeGroupByInto)
 
 ### HAVING
 
-* [having](http://jstayton.github.io/Miner/classes/Miner.html#method_having)
-* [andHaving](http://jstayton.github.io/Miner/classes/Miner.html#method_andHaving)
-* [orHaving](http://jstayton.github.io/Miner/classes/Miner.html#method_orHaving)
-* [havingIn](http://jstayton.github.io/Miner/classes/Miner.html#method_havingIn)
-* [havingNotIn](http://jstayton.github.io/Miner/classes/Miner.html#method_havingNotIn)
-* [havingBetween](http://jstayton.github.io/Miner/classes/Miner.html#method_havingBetween)
-* [havingNotBetween](http://jstayton.github.io/Miner/classes/Miner.html#method_havingNotBetween)
-* [openHaving](http://jstayton.github.io/Miner/classes/Miner.html#method_openHaving)
-* [closeHaving](http://jstayton.github.io/Miner/classes/Miner.html#method_closeHaving)
-* [getHavingPlaceholderValues](http://jstayton.github.io/Miner/classes/Miner.html#method_getHavingPlaceholderValues)
-* [getHavingString](http://jstayton.github.io/Miner/classes/Miner.html#method_getHavingString)
-* [mergeHavingInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeHavingInto)
+* [having](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_having)
+* [andHaving](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_andHaving)
+* [orHaving](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_orHaving)
+* [havingIn](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_havingIn)
+* [havingNotIn](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_havingNotIn)
+* [havingBetween](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_havingBetween)
+* [havingNotBetween](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_havingNotBetween)
+* [openHaving](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_openHaving)
+* [closeHaving](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_closeHaving)
+* [getHavingPlaceholderValues](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getHavingPlaceholderValues)
+* [getHavingString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getHavingString)
+* [mergeHavingInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeHavingInto)
 
 ### ORDER BY
 
-* [orderBy](http://jstayton.github.io/Miner/classes/Miner.html#method_orderBy)
-* [getOrderByString](http://jstayton.github.io/Miner/classes/Miner.html#method_getOrderByString)
-* [mergeOrderByInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeOrderByInto)
+* [orderBy](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_orderBy)
+* [getOrderByString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getOrderByString)
+* [mergeOrderByInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeOrderByInto)
 
 ### LIMIT
 
-* [limit](http://jstayton.github.io/Miner/classes/Miner.html#method_limit)
-* [getLimit](http://jstayton.github.io/Miner/classes/Miner.html#method_getLimit)
-* [getLimitOffset](http://jstayton.github.io/Miner/classes/Miner.html#method_getLimitOffset)
-* [getLimitString](http://jstayton.github.io/Miner/classes/Miner.html#method_getLimitString)
+* [limit](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_limit)
+* [getLimit](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getLimit)
+* [getLimitOffset](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getLimitOffset)
+* [getLimitString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getLimitString)
 
 ### Statement
 
-* [execute](http://jstayton.github.io/Miner/classes/Miner.html#method_execute)
-* [getStatement](http://jstayton.github.io/Miner/classes/Miner.html#method_getStatement)
-* [getPlaceholderValues](http://jstayton.github.io/Miner/classes/Miner.html#method_getPlaceholderValues)
-* [isSelect](http://jstayton.github.io/Miner/classes/Miner.html#method_isSelect)
-* [isInsert](http://jstayton.github.io/Miner/classes/Miner.html#method_isInsert)
-* [isReplace](http://jstayton.github.io/Miner/classes/Miner.html#method_isReplace)
-* [isUpdate](http://jstayton.github.io/Miner/classes/Miner.html#method_isUpdate)
-* [isDelete](http://jstayton.github.io/Miner/classes/Miner.html#method_isDelete)
-* [__toString](http://jstayton.github.io/Miner/classes/Miner.html#method___toString)
-* [mergeInto](http://jstayton.github.io/Miner/classes/Miner.html#method_mergeInto)
+* [execute](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_execute)
+* [getSql](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getSql)
+* [getStatement](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getStatement)
+* [getBoundedParams](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getBoundedParams)
+* [getPlaceholderValues](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getPlaceholderValues)
+* [isSelect](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_isSelect)
+* [isInsert](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_isInsert)
+* [isReplace](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_isReplace)
+* [isUpdate](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_isUpdate)
+* [isDelete](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_isDelete)
+* [__toString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method___toString)
+* [mergeInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeInto)
 
 ### Connection
 
-* [setPdoConnection](http://jstayton.github.io/Miner/classes/Miner.html#method_setPdoConnection)
-* [getPdoConnection](http://jstayton.github.io/Miner/classes/Miner.html#method_getPdoConnection)
-* [setAutoQuote](http://jstayton.github.io/Miner/classes/Miner.html#method_setAutoQuote)
-* [getAutoQuote](http://jstayton.github.io/Miner/classes/Miner.html#method_getAutoQuote)
-* [autoQuote](http://jstayton.github.io/Miner/classes/Miner.html#method_autoQuote)
-* [quote](http://jstayton.github.io/Miner/classes/Miner.html#method_quote)
+* [setPdoConnection](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_setPdoConnection)
+* [getPdoConnection](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getPdoConnection)
+* [setAutoQuote](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_setAutoQuote)
+* [getAutoQuote](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getAutoQuote)
+* [autoQuote](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_autoQuote)
+* [quote](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_quote)
 
 Feedback
 --------
