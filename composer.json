@@ -1,9 +1,9 @@
 {
-    "name": "ulue/miner",
+    "name": "phpcom-lab/miner",
     "type": "library",
     "description": "A dead simple PHP class for building SQL statements. No manual string concatenation necessary.",
     "keywords": ["sql", "sequel", "mysql", "postgresql", "sqlite", "statement", "statements", "query", "pdo", "crud"],
-    "homepage": "https://github.com/ulue/Miner",
+    "homepage": "https://github.com/phpcom-lab/miner",
     "license": "MIT",
     "authors": [
         {
@@ -18,6 +18,6 @@
         }
     },
     "require": {
-        "php": ">7.0.0"
+        "php": ">7.1.0"
     }
 }
