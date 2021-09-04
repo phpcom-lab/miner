@@ -1,7 +1,6 @@
 # Miner
 
-[![Latest Stable Version](https://poser.pugx.org/jstayton/miner/v/stable.png)](https://packagist.org/packages/ulue/miner)
-[![Total Downloads](https://poser.pugx.org/jstayton/miner/downloads.png)](https://packagist.org/packages/ulue/miner)
+[![Latest Stable Version](https://poser.pugx.org/phpcom-lab/miner/v/stable.png)](https://packagist.org/packages/phpcom-lab/miner)
 
 > forked from https://github.com/jstayton/Miner
 
@@ -9,8 +8,8 @@ A dead simple PHP class for building SQL statements. No manual string concatenat
 
 Developed by [Justin Stayton](http://twitter.com/jstayton) while at [Monk Development](http://monkdev.com).
 
-* [Documentation](https://ulue.github.io/Miner/classes/master/Miner/Miner.html)
-* [Release Notes](https://github.com/jstayton/Miner/wiki/Release-Notes)
+* [Documentation](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html)
+* [Release Notes](https://github.com/phpcom-lab/miner/wiki/Release-Notes)
 
 ## Requirements
 
@@ -25,20 +24,20 @@ The recommended installation method is through [Composer](http://getcomposer.org
 In command line:
 
 ```bash
-composer require ulue/miner
+composer require phpcom-lab/miner
 ```
 
-Or, just add `ulue/miner` to your project's `composer.json` file:
+Or, just add `phpcom-lab/miner` to your project's `composer.json` file:
 
 ```json
 {
     "require": {
-        "ulue/miner": "*"
+        "phpcom-lab/miner": "*"
     }
 }
 ```
 
-[More details](http://packagist.org/packages/ulue/miner) can be found over at [Packagist](http://packagist.org).
+[More details](http://packagist.org/packages/phpcom-lab/miner) can be found over at [Packagist](http://packagist.org).
 
 ## Getting Started
 
@@ -198,144 +197,144 @@ $miner->delete()
 
 ## Methods
 
-* [__construct](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method___construct)
+* [__construct](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method___construct)
 
 ### SELECT
 
-* [select](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_select)
-* [getSelect](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getSelect)
-* [getSelectString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getSelectString)
-* [mergeSelectInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeSelectInto)
+* [select](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_select)
+* [getSelect](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getSelect)
+* [getSelectString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getSelectString)
+* [mergeSelectInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeSelectInto)
 
 ### INSERT
 
-* [insert](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_insert)
-* [getInsert](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getInsert)
-* [getInsertString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getInsertString)
-* [mergeInsertInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeInsertInto)
+* [insert](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_insert)
+* [getInsert](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getInsert)
+* [getInsertString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getInsertString)
+* [mergeInsertInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeInsertInto)
 
 ### REPLACE
 
-* [replace](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_replace)
-* [getReplace](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getReplace)
-* [getReplaceString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getReplaceString)
-* [mergeReplaceInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeReplaceInto)
+* [replace](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_replace)
+* [getReplace](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getReplace)
+* [getReplaceString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getReplaceString)
+* [mergeReplaceInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeReplaceInto)
 
 ### UPDATE
 
-* [update](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_update)
-* [getUpdate](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getUpdate)
-* [getUpdateString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getUpdateString)
-* [mergeUpdateInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeUpdateInto)
+* [update](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_update)
+* [getUpdate](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getUpdate)
+* [getUpdateString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getUpdateString)
+* [mergeUpdateInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeUpdateInto)
 
 ### DELETE
 
-* [delete](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_delete)
-* [getDeleteString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getDeleteString)
-* [mergeDeleteInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeDeleteInto)
+* [delete](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_delete)
+* [getDeleteString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getDeleteString)
+* [mergeDeleteInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeDeleteInto)
 
 ### OPTIONS
 
-* [option](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_option)
-* [calcFoundRows](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_calcFoundRows)
-* [distinct](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_distinct)
-* [getOptionsString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getOptionsString)
-* [mergeOptionsInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeOptionsInto)
+* [option](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_option)
+* [calcFoundRows](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_calcFoundRows)
+* [distinct](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_distinct)
+* [getOptionsString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getOptionsString)
+* [mergeOptionsInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeOptionsInto)
 
 ### SET / VALUES
 
-* [set](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_set)
-* [values](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_values)
-* [getSetPlaceholderValues](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getSetPlaceholderValues)
-* [getSetString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getSetString)
-* [mergeSetInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeSetInto)
+* [set](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_set)
+* [values](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_values)
+* [getSetPlaceholderValues](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getSetPlaceholderValues)
+* [getSetString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getSetString)
+* [mergeSetInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeSetInto)
 
 ### FROM
 
-* [from](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_from)
-* [innerJoin](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_innerJoin)
-* [leftJoin](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_leftJoin)
-* [rightJoin](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_rightJoin)
-* [join](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_join)
-* [getFrom](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getFrom)
-* [getFromAlias](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getFromAlias)
-* [getFromString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getFromString)
-* [getJoinString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getJoinString)
-* [mergeFromInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeFromInto)
-* [mergeJoinInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeJoinInto)
+* [from](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_from)
+* [innerJoin](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_innerJoin)
+* [leftJoin](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_leftJoin)
+* [rightJoin](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_rightJoin)
+* [join](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_join)
+* [getFrom](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getFrom)
+* [getFromAlias](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getFromAlias)
+* [getFromString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getFromString)
+* [getJoinString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getJoinString)
+* [mergeFromInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeFromInto)
+* [mergeJoinInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeJoinInto)
 
 ### WHERE
 
-* [where](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_where)
-* [andWhere](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_andWhere)
-* [orWhere](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_orWhere)
-* [whereIn](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_whereIn)
-* [whereNotIn](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_whereNotIn)
-* [whereBetween](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_whereBetween)
-* [whereNotBetween](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_whereNotBetween)
-* [openWhere](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_openWhere)
-* [closeWhere](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_closeWhere)
-* [getWherePlaceholderValues](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getWherePlaceholderValues)
-* [getWhereString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getWhereString)
-* [mergeWhereInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeWhereInto)
+* [where](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_where)
+* [andWhere](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_andWhere)
+* [orWhere](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_orWhere)
+* [whereIn](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_whereIn)
+* [whereNotIn](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_whereNotIn)
+* [whereBetween](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_whereBetween)
+* [whereNotBetween](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_whereNotBetween)
+* [openWhere](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_openWhere)
+* [closeWhere](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_closeWhere)
+* [getWherePlaceholderValues](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getWherePlaceholderValues)
+* [getWhereString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getWhereString)
+* [mergeWhereInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeWhereInto)
 
 ### GROUP BY
 
-* [groupBy](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_groupBy)
-* [getGroupByString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getGroupByString)
-* [mergeGroupByInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeGroupByInto)
+* [groupBy](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_groupBy)
+* [getGroupByString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getGroupByString)
+* [mergeGroupByInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeGroupByInto)
 
 ### HAVING
 
-* [having](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_having)
-* [andHaving](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_andHaving)
-* [orHaving](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_orHaving)
-* [havingIn](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_havingIn)
-* [havingNotIn](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_havingNotIn)
-* [havingBetween](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_havingBetween)
-* [havingNotBetween](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_havingNotBetween)
-* [openHaving](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_openHaving)
-* [closeHaving](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_closeHaving)
-* [getHavingPlaceholderValues](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getHavingPlaceholderValues)
-* [getHavingString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getHavingString)
-* [mergeHavingInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeHavingInto)
+* [having](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_having)
+* [andHaving](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_andHaving)
+* [orHaving](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_orHaving)
+* [havingIn](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_havingIn)
+* [havingNotIn](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_havingNotIn)
+* [havingBetween](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_havingBetween)
+* [havingNotBetween](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_havingNotBetween)
+* [openHaving](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_openHaving)
+* [closeHaving](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_closeHaving)
+* [getHavingPlaceholderValues](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getHavingPlaceholderValues)
+* [getHavingString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getHavingString)
+* [mergeHavingInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeHavingInto)
 
 ### ORDER BY
 
-* [orderBy](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_orderBy)
-* [getOrderByString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getOrderByString)
-* [mergeOrderByInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeOrderByInto)
+* [orderBy](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_orderBy)
+* [getOrderByString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getOrderByString)
+* [mergeOrderByInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeOrderByInto)
 
 ### LIMIT
 
-* [limit](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_limit)
-* [getLimit](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getLimit)
-* [getLimitOffset](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getLimitOffset)
-* [getLimitString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getLimitString)
+* [limit](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_limit)
+* [getLimit](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getLimit)
+* [getLimitOffset](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getLimitOffset)
+* [getLimitString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getLimitString)
 
 ### Statement
 
-* [execute](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_execute)
-* [getSql](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getSql)
-* [getStatement](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getStatement)
-* [getBoundedParams](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getBoundedParams)
-* [getPlaceholderValues](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getPlaceholderValues)
-* [isSelect](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_isSelect)
-* [isInsert](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_isInsert)
-* [isReplace](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_isReplace)
-* [isUpdate](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_isUpdate)
-* [isDelete](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_isDelete)
-* [__toString](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method___toString)
-* [mergeInto](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_mergeInto)
+* [execute](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_execute)
+* [getSql](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getSql)
+* [getStatement](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getStatement)
+* [getBoundedParams](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getBoundedParams)
+* [getPlaceholderValues](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getPlaceholderValues)
+* [isSelect](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_isSelect)
+* [isInsert](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_isInsert)
+* [isReplace](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_isReplace)
+* [isUpdate](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_isUpdate)
+* [isDelete](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_isDelete)
+* [__toString](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method___toString)
+* [mergeInto](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_mergeInto)
 
 ### Connection
 
-* [setPdoConnection](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_setPdoConnection)
-* [getPdoConnection](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getPdoConnection)
-* [setAutoQuote](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_setAutoQuote)
-* [getAutoQuote](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_getAutoQuote)
-* [autoQuote](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_autoQuote)
-* [quote](https://ulue.github.io/Miner/classes/master/Miner/Miner.html#method_quote)
+* [setPdoConnection](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_setPdoConnection)
+* [getPdoConnection](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getPdoConnection)
+* [setAutoQuote](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_setAutoQuote)
+* [getAutoQuote](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_getAutoQuote)
+* [autoQuote](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_autoQuote)
+* [quote](https://phpcom-lab.github.io/miner/classes/master/Miner/Miner.html#method_quote)
 
 Feedback
 --------
